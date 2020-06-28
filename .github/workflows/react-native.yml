@@ -10,30 +10,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: macos-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test --ci   
-    
-    - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Permission Gradle
-      run: chmod +x ./android/gradlew
-    - name: Build with Gradle      
-      run: ./android/gradlew assembleRelease
+  install-and-test:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Install npm dependencies
+        run: |
+          npm ci
+      - name: Run tests
+        run: |
+          npm test --ci  
