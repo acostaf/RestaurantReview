@@ -150,10 +150,17 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file(RestaurantReview_RELEASE_STORE_FILE)
+            storePassword RestaurantReview_RELEASE_KEY_ALIAS
+            keyAlias RestaurantReview_RELEASE_STORE_PASSWORD
+            keyPassword RestaurantReview_RELEASE_KEY_PASSWORD
+        }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
