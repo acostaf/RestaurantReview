@@ -29,6 +29,8 @@ jobs:
         - name: Install npm dependencies
           run: |
             npm ci
+        - name: Permission Gradle
+          run: chmod +x ./android/gradlew
         - name: Build Android Release
           run: |
             cd android && ./gradlew assembleRelease -P MESA_UPLOAD_STORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}' -P MESA_UPLOAD_KEY_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
