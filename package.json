@@ -43,6 +43,12 @@
   },
   "jest": {
     "preset": "react-native",
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|react-navigation|@react-navigation/.*))"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
