@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  build:
 
     runs-on: macos-latest
 
@@ -28,9 +28,6 @@ jobs:
     - run: npm run build --if-present
     - run: npm test --ci   
 
-  build:
-    runs-on: macos-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -38,4 +35,5 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Gradle
+        run: chmod +x ./android/gradlew
         run: ./android/gradlew assembleRelease
