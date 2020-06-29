@@ -53,9 +53,9 @@ jobs:
             cd ios && pod install
         - name: Build app
           run: |       
-            xcodebuild -workspace MESA.xcworkspace -scheme MESA archive -archivePath MESA.xcarchive -allowProvisioningUpdates
-            xcodebuild -exportArchive -archivePath ./MESA.xcarchive -exportPath . -exportOptionsPlist MESA/Info.plist
-            mv MESA.ipa ../MESA.ipa
+            xcodebuild -workspace mesa.xcworkspace -scheme mesa archive -archivePath mesa.xcarchive -allowProvisioningUpdates
+            xcodebuild -exportArchive -archivePath ./mesa.xcarchive -exportPath . -exportOptionsPlist mesa/Info.plist
+            mv mesa.ipa ../mesa.ipa
         - name: Upload Artifact
           uses: actions/upload-artifact@v1
           with:
