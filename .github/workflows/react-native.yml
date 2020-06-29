@@ -53,7 +53,7 @@ jobs:
             cd ios && pod install
         - name: Build app
           run: |       
-            xcodebuild -workspace mesa.xcworkspace -scheme mesa archive -archivePath mesa.xcarchive -allowProvisioningUpdates
+            xcodebuild -workspace ./mesa.xcworkspace -scheme mesa archive -archivePath mesa.xcarchive -allowProvisioningUpdates
             xcodebuild -exportArchive -archivePath ./mesa.xcarchive -exportPath . -exportOptionsPlist mesa/Info.plist
             mv mesa.ipa ../mesa.ipa
         - name: Upload Artifact
