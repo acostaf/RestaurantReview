@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RestaurantList } from 'components/RestaurantList';
 import { RestaurantInfo } from 'components/RestaurantInfo';
 import { About } from 'components/About';
+import { AddReview } from 'components/AddReview';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const HomeStack = createStackNavigator();
@@ -28,6 +29,7 @@ const HomeStackScreen = () => {
           },
         }}
       />
+      <HomeStack.Screen name="AddReview" component={AddReview} options={{ headerShown: false }} />
     </HomeStack.Navigator>
   );
 };
@@ -56,7 +58,6 @@ export const App = () => {
           },
         })}
         tabBarOptions={{ activeBackgroundColor: '#E6F0FA' }}>
-          
         <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="About" component={AboutStackScreen} />
       </Tab.Navigator>

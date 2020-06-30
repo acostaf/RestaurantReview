@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
-import { View, Text, Route, ScrollView, Image, StyleSheet } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { View, Text, Route, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { Stars } from './Stars';
 
 export const RestaurantInfo = () => {
+  const navigation = useNavigation();
   const route = useRoute();
+
   const place = route.params?.place;
+
+  const infoPressed = () => {
+    navigation.navigate('AddReview');
+  };
 
   return (
     <ScrollView style={styles.root}>
@@ -22,6 +28,9 @@ export const RestaurantInfo = () => {
           <Text style={styles.name}>{place.name}</Text>
           <Text style={styles.address}>{place.address}</Text>
           <Stars rating={place.rating} />
+          <TouchableOpacity style={styles.button} onPress={infoPressed}>
+            <Text style={styles.buttonText}>Add Review</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -50,5 +59,19 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 20,
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#0066CC',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    backgroundColor: '#fff',
+    marginTop: 8,
+  },
+  buttonText: {
+    color: '#0066cc',
+    fontSize: 12,
+    textAlign: 'center',
   },
 });
